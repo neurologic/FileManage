@@ -20,9 +20,9 @@ from os.path import join, splitext, exists
 import time
 import scipy.io as sio
 import imp
+import array
 
 numchannels_array = sys.argv
-
 numchannels = int(numchannels_array[1])
 
 def file_list(folder):
@@ -37,9 +37,10 @@ cluster_id = np.zeros((len(is_mean_waveform)))
 prb_location_microns = np.zeros((len(is_mean_waveform),2))
 filesklusta = file_list(klustadir)
 prb_file_arr = [file_entry[1] for file_entry in filesklusta if '.prb' in file_entry[1]]
-prb_file_name = prb_file_arr[0]
+prb_file_name = prb_file_arr[1]
+a = '/'.join((klustadir,prb_file_name))
 
-
+# -*- coding: utf-8 -*-
 prb_info = imp.load_source('probe_file','/'.join((klustadir,prb_file_name)))
 chan_index_order = prb_info.channel_groups[0]['channels']
 chan_geometry = prb_info.channel_groups[0]['geometry']
