@@ -22,7 +22,8 @@ import scipy.io as sio
 import imp
 
 numchannels_array = sys.argv
-numchannels = int(numchannels_array[0])
+
+numchannels = int(numchannels_array[1])
 
 def file_list(folder):
     return [(folder, filename) for filename in listdir(folder)]
